@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f0f2f5;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1a73e8;
+    }
+
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+
+    input[type="text"], input[type="file"] {
+      width: 70%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #1557b0;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .pass {
+      background: #e6f4ea;
+      color: #137333;
+      border: 1px solid #34a853;
+    }
+
+    .malicious {
+      background: #fce8e6;
+      color: #c5221f;
+      border: 1px solid #c5221f;
+    }
+
+    .error {
+      background: #fef7e0;
+      color: #b06d0e;
+      border: 1px solid #fbbc04;
+    }
+
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #1a73e8;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+
+    /* NEW: Installation guide styling */
+    #installGuide {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      display: none;
+    }
+    #installGuide ol {
+      margin: 10px 0 0 20px;
+    }
+    #installGuide code {
+      background: #e0e0e0;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Added styles from the second snippet */
+    .security-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      background: #1a73e8;
+      color: white;
+      border-radius: 5px;
+      cursor: help;
+    }
+    .privacy-link {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🛡️ PhishGuard</h1>
+    <p>Protect yourself from phishing attacks</p>
+  </div>
+
+  <!-- URL Check Section -->
+  <div class="section">
+    <h2>🔗 Check URL</h2>
+    <input type="text" id="urlInput" placeholder="Enter URL (e.g., https://example.com)">
+    <button id="scanBtn">Scan URL</button>
+    <div class="loader" id="urlLoader"></div>
+    <div id="urlResult" class="result"></div>
+  </div>
+
+  <!-- QR Code Section -->
+  <div class="section">
+    <h2>📷 Check QR Code</h2>
+    <input type="file" id="qrFile" accept=".png">
+    <button id="qrBtn">Scan QR Code</button>
+    <div class="loader" id="qrLoader"></div>
+    <div id="qrResult" class="result"></div>
+  </div>
+
+  <!-- Modified Extension Download Section -->
+  <div class="section">
+    <h2>⬇️ Get Protection</h2>
+    <button id="installBtn">Install Browser Extension</button>
+    <div id="installGuide">
+      <p>To install in Firefox:</p>
+      <ol>
+        <li>Download the extension file</li>
+        <li>Open Firefox and type <code>about:debugging</code></li>
+        <li>Click "Load Temporary Add-on"</li>
+        <li>Select the downloaded file</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- New elements from second snippet -->
+  <div class="security-badge" title="Protected by PhishGuard™ Security">
+    🔒 Verified Protection
+  </div>
+
+  <div class="privacy-link">
+    <a href="/privacy" target="_blank">Privacy Policy</a> | 
+    <a href="/terms" target="_blank">Terms of Service</a>
+  </div>
+
+  <!-- External JavaScript file for inline scripts -->
+  <script src="/scripts/scripts.js"></script>
+</body>
+</html>
