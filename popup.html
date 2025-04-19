@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:3000;">
+  <title>PhishGuard Scanner</title>
+  <style>
+    body {
+      width: 380px;
+      padding: 15px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: #f8f9fa;
+      color: #202124;
+    }
+    h2 {
+      color: #1a73e8;
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 8px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+      color: #5f6368;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dadce0;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #1a73e8;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      width: 100%;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background-color 0.2s;
+    }
+    button:hover { background-color: #1557b0; }
+    button:disabled { background-color: #9e9e9e; cursor: not-allowed; }
+    .loader {
+      display: none;
+      margin: 10px auto;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #1a73e8;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+    .result.safe   { background: #e6f4ea; color: #137333; border: 1px solid #34a853; }
+    .result.malicious { background: #fce8e6; color: #c5221f; border: 1px solid #c5221f; }
+    .result.error  { background: #fef7e0; color: #b06d0e; border: 1px solid #fbbc04; }
+    .result-link {
+      display: block;
+      margin-top: 6px;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .result-link:hover { text-decoration: underline; }
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>PhishGuard Scanner</h2>
+
+  <div class="input-group">
+    <label for="urlInput">Check URL</label>
+    <input type="text" id="urlInput" placeholder="Enter URL (e.g., https://example.com)" autocomplete="off">
+    <button id="checkUrl">Scan URL</button>
+    <div id="urlLoader" class="loader"></div>
+    <div id="urlResult" class="result"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

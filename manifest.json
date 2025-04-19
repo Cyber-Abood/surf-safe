@@ -1,0 +1,54 @@
+{
+  "manifest_version": 2,
+  "name": "PhishGuard",
+  "version": "1.0.2",
+  "description": "Advanced phishing protection with real‑time analysis and machine learning",
+  "icons": {
+    "16": "icons/safe16.png",
+    "32": "icons/safe32.png",
+    "48": "icons/safe48.png",
+    "96": "icons/safe96.png"
+  },
+  "background": {
+    "scripts": [
+      "lib/webextension-polyfill.js",
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/safe16.png",
+      "32": "icons/safe32.png"
+    },
+    "default_popup": "popup/popup.html",
+    "default_title": "PhishGuard Scanner"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "http://localhost:3000/*",
+    "storage",
+    "tabs",
+    "alarms",
+    "notifications",
+    "activeTab"
+  ],
+  "web_accessible_resources": [
+    "warning.html",
+    "popup/popup.html"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:3000 https://api.virustotal.com; object-src 'none';",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "phishguard@security.example",
+      "strict_min_version": "78.0",
+      "allowed_hosts": [
+        "localhost",
+        "127.0.0.1",
+        "localhost:3000"
+      ]
+    }
+  }
+}
